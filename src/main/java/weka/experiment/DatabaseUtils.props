@@ -8,11 +8,13 @@
 #jdbcDriver=jdbc.idbDriver
 #jdbcDriver=RmiJdbc.RJDriver,jdbc.idbDriver,org.gjt.mm.mysql.Driver,com.mckoi.JDBCDriver,org.hsqldb.jdbcDriver
 #jdbcDriver=org.gjt.mm.mysql.Driver
+jdbcDriver=com.mysql.jdbc.Driver
 
 # The url to the experiment database
 #jdbcURL=jdbc:rmi://expserver/jdbc:idb=experiments.prp
 jdbcURL=jdbc:idb=experiments.prp
 #jdbcURL=jdbc:mysql://mysqlserver/username
+jdbcURL=jdbc:mysql://127.0.0.1/weka?characterEncoding=UTF-8
 
 # the method that is used to retrieve values from the db 
 # (java datatype + RecordSet.<method>)

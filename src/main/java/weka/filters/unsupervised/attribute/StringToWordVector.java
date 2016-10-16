@@ -149,7 +149,10 @@ public class StringToWordVector
   /** Range of columns to convert to word vectors. */
   protected Range m_SelectedRange = new Range("first-last");
 
-  /** Contains a mapping of valid words to attribute indexes. */
+  /** Contains a mapping of valid words to attribute indexe
+   * （单词-单词在词典中的索引）s. 
+   *  
+   */
   private TreeMap m_Dictionary = new TreeMap();
 
   /** True if output instances should contain word frequency rather than boolean 0 or 1. */
@@ -224,7 +227,11 @@ public class StringToWordVector
   /** the minimum (per-class) word frequency. */
   private int m_minTermFreq = 1;
 
-  /** whether to operate on a per-class basis. */
+  /** whether to operate on a per-class basis.
+   * 值为true时，忽略类属性，所有类的实例被当作一个类的实例对待；
+   * 值为false时，每个类的实例区别对待；区别对待体现在是否统计各类中每个单词出现的次数。
+   *  
+   */
   private boolean m_doNotOperateOnPerClassBasis = false;
 
   /** a file containing stopwords for using others than the default Rainbow 
@@ -602,7 +609,7 @@ public class StringToWordVector
     /** for serialization. */
     static final long serialVersionUID = 2157223818584474321L;
 
-    /** the counts. */
+    /** the counts. 分别表示单词出现的次数和包含该单词的文档数*/
     public int count, docCount;
 
     /**
@@ -1397,6 +1404,7 @@ public class StringToWordVector
     }
 
     //TreeMap dictionaryArr [] = new TreeMap[values];
+    // 每一类，每个单词出现的次数
     TreeMap [] dictionaryArr = new TreeMap[values];
     for (int i = 0; i < values; i++) {
       dictionaryArr[i] = new TreeMap();
@@ -1416,6 +1424,7 @@ public class StringToWordVector
       }
 
       // Iterate through all relevant string attributes of the current instance
+      // 保存在当前文档出现的单词，用于更新当前类别包含这些单词的文档的数目
       Hashtable h = new Hashtable();
       for (int j = 0; j < instance.numAttributes(); j++) { 
 	if (m_SelectedRange.isInRange(j) && (instance.isMissing(j) == false)) {
@@ -1531,6 +1540,7 @@ public class StringToWordVector
 
     // Add the word vector attributes (eliminating duplicates
 	// that occur in multiple classes)
+    // 词-词索引
     TreeMap newDictionary = new TreeMap();
     int index = attributes.size();
     for(int z = 0; z < values; z++) {

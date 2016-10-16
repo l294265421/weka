@@ -415,7 +415,7 @@ public class Instances implements Serializable, RevisionHandler {
   }
 
   /**
-   * Returns the class attribute's index. Returns negative number if it's
+   * Returns the class attribute's index(返回类属性的索引值). Returns negative number if it's
    * undefined.
    * 
    * @return the class index as an integer

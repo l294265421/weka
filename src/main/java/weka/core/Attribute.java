@@ -589,7 +589,7 @@ public class Attribute
   }
   
   /**
-   * Returns the number of attribute values. Returns 0 for 
+   * Returns the number of attribute values （返回这个属性有多少不同的值）. Returns 0 for 
    * attributes that are not either nominal, string, or
    * relation-valued.
    *

@@ -690,7 +690,7 @@ public class Stopwords
   /**
    * Generates a new Stopwords object from the reader. The reader is
    * closed automatically.
-   *
+   * 一行被视为一个停用词，以#开头的行被视为注释
    * @param reader the reader to get the stopwords from
    * @throws Exception if reading fails
    */

@@ -20,7 +20,7 @@ public class StanfordWordTokenizer extends Tokenizer {
 
 	@Override
 	public String getRevision() {
-		return "Stanford Segmenter";
+		return "Stanford Segmenter 3.5.2";
 	}
 
 	@Override

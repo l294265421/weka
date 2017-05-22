@@ -107,6 +107,9 @@ public abstract class Tokenizer
    * strings remained in the option string then data is read from stdin, line 
    * by line.
    * 
+   * 我的理解：
+   * 文档中的意思是，options前面保存tokenizer的选项，后面部分保存tokenizer要处理的数据
+   * 
    * @param tokenizer	the tokenizer to use
    * @param options	the options for the tokenizer
    * @return		the tokenized strings
@@ -132,28 +135,29 @@ public abstract class Tokenizer
     // run over all un-processed strings in the options array
     processed = false;
     for (i = 0; i < options.length; i++) {
+    	// 选项的部分的被设置为空字符串了
       if (options[i].length() != 0) {
-	processed = true;
-	data.add(options[i]);
+    	  processed = true;
+    	  data.add(options[i]);
       }
     }
     
     // if no strings in option string then read from stdin
     if (!processed) {
-      reader = new BufferedReader(new InputStreamReader(System.in));
-      while ((line = reader.readLine()) != null) {
-	data.add(line);
-      }
+    	reader = new BufferedReader(new InputStreamReader(System.in));
+    	while ((line = reader.readLine()) != null) {
+    		data.add(line);
+    	}
     }
 
     // process data
     for (i = 0; i < data.size(); i++) {
-      tmpResult = new Vector<String>();
-      tokenizer.tokenize(data.get(i));
-      while (tokenizer.hasMoreElements())
-	tmpResult.add((String) tokenizer.nextElement());
-      // add to result
-      result.addAll(tmpResult);
+    	tmpResult = new Vector<String>();
+    	tokenizer.tokenize(data.get(i));
+    	while (tokenizer.hasMoreElements())
+    		tmpResult.add((String) tokenizer.nextElement());
+    	// add to result
+    	result.addAll(tmpResult);
     }
     
     return result.toArray(new String[result.size()]);
@@ -169,13 +173,13 @@ public abstract class Tokenizer
    * @param options	the options for the tokenizer
    */
   public static void runTokenizer(Tokenizer tokenizer, String[] options) {
-    String[]	result;
-    int		i;
+    String[] result;
+    int	i;
 
     try {
       result = tokenize(tokenizer, options);
       for (i = 0; i < result.length; i++)
-	System.out.println(result[i]);
+    	  System.out.println(result[i]);
     }
     catch (Exception e) {
       e.printStackTrace();

@@ -149,8 +149,8 @@ public class StringToWordVector
   /** Range of columns to convert to word vectors. */
   protected Range m_SelectedRange = new Range("first-last");
 
-  /** Contains a mapping of valid words to attribute indexe
-   * （单词-单词在词典中的索引）s. 
+  /** Contains a mapping of valid words to attribute indexes
+   * （单词-单词的属性索引）. 
    *  
    */
   private TreeMap m_Dictionary = new TreeMap();

@@ -1,6 +1,5 @@
 package weka.core.tokenizers;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,7 +8,10 @@ import com.hankcs.hanlp.seg.common.Term;
 
 public class HanlpTokenizer extends Tokenizer {
 
-	private Iterator<String> wordsIterator;
+	private static final long serialVersionUID = -8969384620055979993L;
+	private String[] splitString;
+	private int currentPosition;
+	private int maxPosition;
 	
 	@Override
 	public String getRevision() {
@@ -23,12 +25,12 @@ public class HanlpTokenizer extends Tokenizer {
 
 	@Override
 	public boolean hasMoreElements() {
-		return wordsIterator.hasNext();
+		return currentPosition <= maxPosition;
 	}
 
 	@Override
 	public Object nextElement() {
-		return wordsIterator.next();
+		return splitString[currentPosition++];
 	}
 
 	@Override
@@ -41,7 +43,8 @@ public class HanlpTokenizer extends Tokenizer {
 				words.add(term.word);
 			}
 		}
-		wordsIterator = words.iterator();
+		splitString = words.toArray(new String[words.size()]);
+		maxPosition = words.size() - 1;
 	}
 
 }

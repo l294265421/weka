@@ -185,11 +185,11 @@ public abstract class Filter
       classes = result.getClassCapabilities();
       iter    = classes.capabilities();
       while (iter.hasNext()) {
-	cap = (Capability) iter.next();
-	if (cap != Capability.NO_CLASS) {
-	  result.disable(cap);
-	  result.disableDependency(cap);
-	}
+    	  cap = (Capability) iter.next();
+    	  if (cap != Capability.NO_CLASS) {
+    		  result.disable(cap);
+    		  result.disableDependency(cap);
+    	  }
       }
     }
     // class? -> remove NO_CLASS

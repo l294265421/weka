@@ -685,24 +685,24 @@ public class StringToWordVector
   public boolean input(Instance instance) throws Exception {
 
     if (getInputFormat() == null) {
-      throw new IllegalStateException("No input instance format defined");
+    	throw new IllegalStateException("No input instance format defined");
     }
     if (m_NewBatch) {
-      resetQueue();
-      m_NewBatch = false;
+    	resetQueue();
+    	m_NewBatch = false;
     }
     if (isFirstBatchDone()) {
-      FastVector fv = new FastVector();
-      int firstCopy = convertInstancewoDocNorm(instance, fv);
-      Instance inst = (Instance)fv.elementAt(0);
-      if (m_filterType != FILTER_NONE) {
-	normalizeInstance(inst, firstCopy);
-      }
-      push(inst);
-      return true;
+    	FastVector fv = new FastVector();
+    	int firstCopy = convertInstancewoDocNorm(instance, fv);
+    	Instance inst = (Instance)fv.elementAt(0);
+    	if (m_filterType != FILTER_NONE) {
+    		normalizeInstance(inst, firstCopy);
+    	}
+    	push(inst);
+    	return true;
     } else {
-      bufferInput(instance);
-      return false;
+    	bufferInput(instance);
+    	return false;
     }
   }
 

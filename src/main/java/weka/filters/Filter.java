@@ -272,8 +272,8 @@ public abstract class Filter
   protected void push(Instance instance) {
 
     if (instance != null) {
-      if (instance.dataset() != null)
-	copyValues(instance, false);
+    	if (instance.dataset() != null)
+    		copyValues(instance, false);
       instance.setDataset(m_OutputFormat);
       m_OutputQueue.push(instance);
     }

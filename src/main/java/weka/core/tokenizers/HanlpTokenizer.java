@@ -45,6 +45,7 @@ public class HanlpTokenizer extends Tokenizer {
 		}
 		splitString = words.toArray(new String[words.size()]);
 		maxPosition = words.size() - 1;
+		currentPosition = 0;
 	}
 
 }

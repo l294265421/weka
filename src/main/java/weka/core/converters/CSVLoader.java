@@ -590,7 +590,7 @@ public class CSVLoader extends AbstractFileLoader implements BatchConverter,
 
     if (m_structure == null) {
       try {
-        m_st = new StreamTokenizer(m_sourceReader);
+        m_st = new StreamTokenizerForCsv(m_sourceReader);
         initTokenizer(m_st);
         readStructure(m_st);
       } catch (FileNotFoundException ex) {
